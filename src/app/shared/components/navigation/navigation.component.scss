@@ -7,12 +7,14 @@ mat-toolbar {
   }
   a {
     padding: 1rem;
-    background-color: white;
+    // background-color: lightgray;
     border-width: 1px;
     border-color: black;
     border-style: solid;
+    text-decoration: none;
+    color: black;
     &:hover {
-      background-color: blue;
+      background-color: lightgray;
     }
   }
 }

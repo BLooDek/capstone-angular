@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'calendar', component: NavigationComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // redirect to
   // { path: '**', component: PageNotFoundComponent }, TODO: add 404 page
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

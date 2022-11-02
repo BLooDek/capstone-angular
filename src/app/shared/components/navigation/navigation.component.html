@@ -4,7 +4,11 @@
   <a routerLink="calendar">Calendar</a>
   <a routerLink="notes">Notes</a>
   <span class="spacer"></span>
-  <button mat-icon-button aria-label="Example icon-button with menu icon">
+  <button
+    mat-icon-button
+    aria-label="Example icon-button with menu icon"
+    (click)="openDialog()"
+  >
     <mat-icon>menu</mat-icon>
   </button></mat-toolbar
 >
