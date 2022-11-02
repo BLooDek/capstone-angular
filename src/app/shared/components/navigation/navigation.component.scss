@@ -1,0 +1,18 @@
+.spacer {
+  flex: 1 1 auto;
+}
+mat-toolbar {
+  span {
+    padding: 0 2rem;
+  }
+  a {
+    padding: 1rem;
+    background-color: white;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    &:hover {
+      background-color: blue;
+    }
+  }
+}
