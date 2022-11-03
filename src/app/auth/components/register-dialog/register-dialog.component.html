@@ -1,8 +1,34 @@
 <h2 mat-dialog-title>Register to access app</h2>
 <div mat-dialog-content>
-  <p>[ut form here</p>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
+    <mat-form-field floatLabel="always">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="email">
+      <mat-error *ngIf="formGroup?.get('email')?.hasError('required')">email is required</mat-error>
+      <mat-error *ngIf="formGroup?.get('email')?.hasError('email')">email is invalid</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field floatLabel="always">
+      <mat-label>Password</mat-label>
+      <input formControlName="password1" matInput placeholder="Password">
+      <mat-error *ngIf="formGroup.get('password1').hasError('required')">password is required</mat-error>
+      <mat-error *ngIf="formGroup.get('password1').hasError('minlength')">Password need to be at least 8 characters long</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field floatLabel="always">
+      <mat-label>Repeat password</mat-label>
+      <input formControlName="password2" matInput placeholder="Password">
+      <mat-error *ngIf="formGroup.get('password2').hasError('required')">password is required</mat-error>
+      <mat-error *ngIf="formGroup.get('password2').hasError('minlength')">Password need to be at least 8 characters long</mat-error>
+    </mat-form-field>
+
+  </form>
+
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button (click)="closeDialog()" cdkFocusInitial>Register</button>
+  <button mat-button (click)="onSubmit()" cdkFocusInitial>Register</button>
 </div>

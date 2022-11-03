@@ -1,15 +1,19 @@
 <mat-toolbar
-  ><span>Capstone😎</span>
+><span>Capstone😎</span>
+  <p>{{loading$ |async}}</p>
   <a routerLink="home">My info</a>
   <a routerLink="calendar">Calendar</a>
   <a routerLink="notes">Notes</a>
   <span class="spacer"></span>
-  <button
-    mat-icon-button
-    aria-label="Example icon-button with menu icon"
-    (click)="openDialog()"
-  >
+  <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
-  </button></mat-toolbar
->
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openRegisterDialog()">SignUp</button>
+    <button mat-menu-item>SignIn</button>
+  </mat-menu>
+
+
+</mat-toolbar>
 <router-outlet></router-outlet>
+
