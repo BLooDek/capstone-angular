@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AuthModule} from './auth/auth.module'
+import {EffectsModule} from "@ngrx/effects";
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,7 @@ import {AuthModule} from './auth/auth.module'
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
     SharedModule,
     BrowserAnimationsModule,
     AuthModule

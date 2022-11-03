@@ -4,11 +4,13 @@ import { RegisterDialogComponent } from './components/register-dialog/register-d
 import { SharedModule } from '../shared/shared.module';
 import {StoreModule} from "@ngrx/store";
 import {AUTH_STORE_KEY, featureReducers} from "./reducers/module.reducers";
+import {EffectsModule} from "@ngrx/effects";
+import {AuthEffects} from "./effects/auth.effects";
 
 
 @NgModule({
   declarations: [RegisterDialogComponent],
-  imports: [CommonModule, SharedModule, StoreModule.forFeature(AUTH_STORE_KEY, featureReducers)],
+  imports: [CommonModule, SharedModule, StoreModule.forFeature(AUTH_STORE_KEY, featureReducers), EffectsModule.forFeature([AuthEffects])],
   exports: [RegisterDialogComponent],
 })
 export class AuthModule {}

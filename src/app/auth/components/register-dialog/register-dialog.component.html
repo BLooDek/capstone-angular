@@ -4,7 +4,7 @@
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
     <mat-form-field floatLabel="always">
       <mat-label>Email</mat-label>
-      <input formControlName="email" matInput placeholder="email">
+      <input formControlName="email" matInput placeholder="email" cdkFocusInitial>
       <mat-error *ngIf="formGroup?.get('email')?.hasError('required')">email is required</mat-error>
       <mat-error *ngIf="formGroup?.get('email')?.hasError('email')">email is invalid</mat-error>
     </mat-form-field>
@@ -30,5 +30,5 @@
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button (click)="onSubmit()" cdkFocusInitial>Register</button>
+  <button mat-button [disabled]="formGroup.invalid || formGroup.untouched" type="submit" (click)="onSubmit()">Register</button>
 </div>

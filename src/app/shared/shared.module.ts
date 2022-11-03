@@ -10,6 +10,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from "@angular/material/input";
 import {StoreModule} from "@ngrx/store";
+import {OverlayModule} from "@angular/cdk/overlay";
 
 const materialModules = [
   MatToolbarModule,
@@ -22,7 +23,7 @@ const materialModules = [
 
 @NgModule({
   declarations: [NavigationComponent],
-  imports: [CommonModule, ...materialModules, RouterModule, ReactiveFormsModule],
-  exports: [NavigationComponent, ...materialModules, ReactiveFormsModule],
+  imports: [CommonModule, ...materialModules, RouterModule, ReactiveFormsModule, OverlayModule ],
+  exports: [NavigationComponent, ...materialModules, ReactiveFormsModule, OverlayModule],
 })
 export class SharedModule {}

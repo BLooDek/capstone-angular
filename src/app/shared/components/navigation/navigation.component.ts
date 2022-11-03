@@ -25,7 +25,7 @@ export class NavigationComponent implements OnInit {
         animal: 'panda',
       },
     });
-    dialogRef.afterClosed().subscribe((e) => console.log(e));
+    // dialogRef.afterClosed().subscribe((e) => console.log(e));
   }
 
   ngOnInit(): void {
