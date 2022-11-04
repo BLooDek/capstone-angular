@@ -13,8 +13,8 @@ export class AuthEffects {
 
   registerUser$: Observable<Action> = createEffect(() => this._actions$.pipe(
     ofType(AuthActions.RegisterUserAction),
-    switchMap(({payload}) => this._authService.registerUser(payload).pipe(
-      map(data => AuthActions.RegisterUserActionSuccess({token: data})),
+    switchMap((payload) => this._authService.registerUser(payload).pipe(
+      map(data => AuthActions.RegisterUserActionSuccess(data)),
       catchError(error => of(AuthActions.RegisterUserActionError(error)))
     ))))
 

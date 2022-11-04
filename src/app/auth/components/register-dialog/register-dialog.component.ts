@@ -37,7 +37,7 @@ export class RegisterDialogComponent implements OnInit {
 
 
   onSubmit() {
-    this._store.dispatch(AuthActions.RegisterUserAction({payload: this.formGroup.getRawValue()}))
+    this._store.dispatch(AuthActions.RegisterUserAction(this.formGroup.getRawValue()))
     this._dialogRef.close();
 
   }
