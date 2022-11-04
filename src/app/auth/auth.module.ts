@@ -6,11 +6,13 @@ import {StoreModule} from "@ngrx/store";
 import {AUTH_STORE_KEY, featureReducers} from "./reducers/module.reducers";
 import {EffectsModule} from "@ngrx/effects";
 import {AuthEffects} from "./effects/auth.effects";
+import {AuthService} from "./services/auth.service";
 
 
 @NgModule({
   declarations: [RegisterDialogComponent],
   imports: [CommonModule, SharedModule, StoreModule.forFeature(AUTH_STORE_KEY, featureReducers), EffectsModule.forFeature([AuthEffects])],
   exports: [RegisterDialogComponent],
+  providers: [AuthService]
 })
 export class AuthModule {}

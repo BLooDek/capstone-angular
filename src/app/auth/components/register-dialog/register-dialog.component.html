@@ -6,7 +6,8 @@
       <mat-label>Email</mat-label>
       <input formControlName="email" matInput placeholder="email" cdkFocusInitial>
       <mat-error *ngIf="formGroup?.get('email')?.hasError('required')">email is required</mat-error>
-      <mat-error *ngIf="formGroup?.get('email')?.hasError('email')">email is invalid</mat-error>
+<!--      <mat-error *ngIf="formGroup?.get('email')?.hasError('email')">email is invalid</mat-error>-->
+      <mat-error *ngIf="formGroup?.get('email')?.hasError('pattern')">email is invalid</mat-error>
     </mat-form-field>
 
 

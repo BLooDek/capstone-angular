@@ -12,7 +12,14 @@ export const initialAuthState: AuthState = {
 export const authReducer = createReducer<AuthState>(initialAuthState,
   on(authActions.RegisterUserAction, state => ({...state, loading: true})),
 
-  on(authActions.RegisterUserActionSuccess, state => ({...state, loading: false})),
+  on(authActions.RegisterUserActionSuccess, state => {
+    console.log('succes');
+    return {...state, loading: false}
+  }),
 
-  on(authActions.RegisterUserActionError, state => ({...state, loading: false})))
+  on(authActions.RegisterUserActionError, state => {
+    console.log('fail');
+    return {...state, loading: false}
+  })
+)
 

@@ -23,7 +23,7 @@ export class RegisterDialogComponent implements OnInit {
   ) {
     this.loading$ = this._store.select(selectLoading);
     this.formGroup = this._fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)]],
       password1: ['', [Validators.required, Validators.minLength(10)]],
       password2: ['', [Validators.required, Validators.minLength(10)]]
     });
@@ -40,14 +40,5 @@ export class RegisterDialogComponent implements OnInit {
     this._store.dispatch(AuthActions.RegisterUserAction({payload: this.formGroup.getRawValue()}))
     this._dialogRef.close();
 
-
-    //close dialog
-    // import {MatDialog} from '@angular/material/dialog';
-    //
-    // constructor(matDialog: MatDialog) {…}
-    //
-    // logout() {
-    //   this.matDialog.closeAll();
-    // }
   }
 }
