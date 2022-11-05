@@ -12,7 +12,7 @@ export const initialAuthState: AuthState = {
 export const authReducer = createReducer<AuthState>(initialAuthState,
   on(AuthActions.RegisterUserAction, AuthActions.LoginUserAction, state => ({...state, loading: true})),
 
-  on(AuthActions.RegisterUserActionSuccess, AuthActions.RegisterUserActionSuccess, (state, payload) => {
+  on(AuthActions.RegisterUserActionSuccess, AuthActions.LoginUserActionSuccess, (state, payload) => {
     console.log(payload);
     return {...state, loading: false, token: payload.key}
   }),
@@ -21,5 +21,6 @@ export const authReducer = createReducer<AuthState>(initialAuthState,
     console.log(payload);
     return {...state, loading: false, errors: payload.error}
   })
+
 )
 
