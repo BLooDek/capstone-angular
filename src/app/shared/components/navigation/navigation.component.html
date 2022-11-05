@@ -1,6 +1,6 @@
 <mat-toolbar
-><span>Capstone😎</span>
-  <p>{{loading$ |async}}</p>
+  ><span>Capstone😎</span>
+  <p>{{ loading$ | async }}</p>
   <a routerLink="home">My info</a>
   <a routerLink="calendar">Calendar</a>
   <a routerLink="notes">Notes</a>
@@ -10,9 +10,7 @@
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="openRegisterDialog()">SignUp</button>
-    <button mat-menu-item>SignIn</button>
+    <button mat-menu-item (click)="openLoginDialog()">SignIn</button>
   </mat-menu>
-
 </mat-toolbar>
 <router-outlet></router-outlet>
-
