@@ -5,10 +5,10 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AuthModule} from './auth/auth.module'
-import {EffectsModule} from "@ngrx/effects";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {AuthInterceptor} from "./auth/interceptors/auth.interceptor";
+import { AuthModule } from './auth/auth.module';
+import { EffectsModule } from '@ngrx/effects';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,9 +20,11 @@ import {AuthInterceptor} from "./auth/interceptors/auth.interceptor";
     EffectsModule.forRoot([]),
     SharedModule,
     BrowserAnimationsModule,
-    AuthModule
+    AuthModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

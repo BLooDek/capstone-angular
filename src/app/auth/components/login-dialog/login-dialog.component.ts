@@ -1,15 +1,15 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { IModuleState } from '../../state/module.state';
-import * as AuthActions from "../../actions/auth.actions";
+import * as AuthActions from '../../actions/auth.actions';
 
 @Component({
   selector: 'app-login-dialog',
   templateUrl: './login-dialog.component.html',
   styleUrls: ['./login-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginDialogComponent implements OnInit {
   formGroup: FormGroup;
@@ -27,7 +27,9 @@ export class LoginDialogComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    this._store.dispatch(AuthActions.LoginUserAction(this.formGroup.getRawValue()))
+    this._store.dispatch(
+      AuthActions.LoginUserAction(this.formGroup.getRawValue())
+    );
     this._dialogRef.close();
   }
 }

@@ -6,11 +6,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatFormFieldModule} from "@angular/material/form-field";
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from "@angular/material/input";
-import {OverlayModule} from "@angular/cdk/overlay";
-import {ConstService} from "./services/const.service";
+import { MatInputModule } from '@angular/material/input';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { ConstService } from './services/const.service';
 
 const materialModules = [
   MatToolbarModule,
@@ -18,13 +18,24 @@ const materialModules = [
   MatDialogModule,
   MatMenuModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
 ];
 
 @NgModule({
   declarations: [NavigationComponent],
-  imports: [CommonModule, ...materialModules, RouterModule, ReactiveFormsModule, OverlayModule ],
-  exports: [NavigationComponent, ...materialModules, ReactiveFormsModule, OverlayModule],
-  providers: [ConstService]
+  imports: [
+    CommonModule,
+    ...materialModules,
+    RouterModule,
+    ReactiveFormsModule,
+    OverlayModule,
+  ],
+  exports: [
+    NavigationComponent,
+    ...materialModules,
+    ReactiveFormsModule,
+    OverlayModule,
+  ],
+  providers: [ConstService],
 })
 export class SharedModule {}

@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import {selectLoading} from "../../selectors/auth.selectors";
 import * as AuthActions from '../../actions/auth.actions'
 import {MatDialogRef} from "@angular/material/dialog";
+import {EMAIL_VALIDATION_PATTERN} from "../../contants/auth.const";
 
 @Component({
   selector: 'app-register-dialog',
@@ -24,7 +25,7 @@ export class RegisterDialogComponent implements OnInit {
   ) {
     this.loading$ = this._store.select(selectLoading);
     this.formGroup = this._fb.group({
-      email: ['', [Validators.required, Validators.pattern(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)]],
+      email: ['', [Validators.required, Validators.pattern(EMAIL_VALIDATION_PATTERN)]],
       password1: ['', [Validators.required, Validators.minLength(10)]],
       password2: ['', [Validators.required, Validators.minLength(10)]]
     });

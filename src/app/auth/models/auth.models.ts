@@ -1,8 +1,8 @@
 export interface IUserData {
-  email: string
+  email: string;
 }
 export interface IUserToken {
-  key: string
+  key: string;
 }
 export interface IRegisterPayload {
   email: string;
@@ -10,6 +10,6 @@ export interface IRegisterPayload {
   password2: string;
 }
 export interface ILoginPayload {
-  email: string,
-  password: string
+  email: string;
+  password: string;
 }
