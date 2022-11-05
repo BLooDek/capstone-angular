@@ -10,6 +10,7 @@ import {AuthService} from "./services/auth.service";
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 
 
+
 @NgModule({
   declarations: [RegisterDialogComponent, LoginDialogComponent],
   imports: [CommonModule, SharedModule, StoreModule.forFeature(AUTH_STORE_KEY, featureReducers), EffectsModule.forFeature([AuthEffects])],

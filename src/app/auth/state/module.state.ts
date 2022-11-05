@@ -1,5 +1,5 @@
 import {AuthState} from "./auth.state";
-import {initialAuthState} from "../reducers/auth.reducer";
+import {initialAuthState} from "../reducers/auth.reducers";
 
 export interface IModuleState {
   auth: AuthState;

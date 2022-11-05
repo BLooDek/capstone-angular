@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {catchError, map, Observable, of, switchMap, withLatestFrom} from "rxjs";
+import {catchError, map, Observable, of, shareReplay, switchMap, withLatestFrom} from "rxjs";
 import {Action, Store} from "@ngrx/store";
 import {Actions, createEffect, ofType} from '@ngrx/effects'
 import {IModuleState} from "../state/module.state";
@@ -14,6 +14,7 @@ export class AuthEffects {
 
   registerUser$: Observable<Action> = createEffect(() => this._actions$.pipe(
     ofType(AuthActions.RegisterUserAction),
+    shareReplay(),
     switchMap((payload) => this._authService.registerUser(payload).pipe(
       map(data => AuthActions.RegisterUserActionSuccess(data)),
       catchError(error => of(AuthActions.RegisterUserActionError(error)))
@@ -22,6 +23,7 @@ export class AuthEffects {
 
   loginUser$: Observable<Action> = createEffect(() => this._actions$.pipe(
     ofType(AuthActions.LoginUserAction),
+    shareReplay(),
     switchMap((payload) => this._authService.loginUser(payload).pipe(
       map(data => AuthActions.LoginUserActionSuccess(data)),
       catchError(error => of(AuthActions.LoginUserActionError(error)))
@@ -30,6 +32,7 @@ export class AuthEffects {
 
   getUserData$: Observable<Action> = createEffect(() => this._actions$.pipe(
       ofType(AuthActions.GetUserDataAction, AuthActions.LoginUserActionSuccess, AuthActions.RegisterUserActionSuccess),
+      shareReplay(),
       switchMap(action => of(action).pipe(
         withLatestFrom(this._store.select(selectToken)),
         switchMap(([_, token]) => this._authService.getUserData(token).pipe(
@@ -38,6 +41,7 @@ export class AuthEffects {
             return AuthActions.GetUserDataActionSuccess(data)
           }),
           catchError(error => of(AuthActions.GetUserDataActionError(error)))
+
         ))
       ))
 

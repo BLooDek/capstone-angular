@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IModuleState} from "../../state/module.state";
 import {Store} from "@ngrx/store";
@@ -11,6 +11,7 @@ import {MatDialogRef} from "@angular/material/dialog";
   selector: 'app-register-dialog',
   templateUrl: './register-dialog.component.html',
   styleUrls: ['./register-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterDialogComponent implements OnInit {
   loading$: Observable<boolean>;
