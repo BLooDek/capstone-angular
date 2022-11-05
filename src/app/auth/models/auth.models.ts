@@ -9,3 +9,7 @@ export interface IRegisterPayload {
   password1: string;
   password2: string;
 }
+export interface ILoginPayload {
+  email: string,
+  password: string
+}

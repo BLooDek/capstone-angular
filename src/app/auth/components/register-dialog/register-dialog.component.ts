@@ -4,7 +4,7 @@ import {IModuleState} from "../../state/module.state";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {selectLoading} from "../../selectors/auth.selectors";
-import * as AuthActions from '../../actions/auth.action'
+import * as AuthActions from '../../actions/auth.actions'
 import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
@@ -39,6 +39,5 @@ export class RegisterDialogComponent implements OnInit {
   onSubmit() {
     this._store.dispatch(AuthActions.RegisterUserAction(this.formGroup.getRawValue()))
     this._dialogRef.close();
-
   }
 }

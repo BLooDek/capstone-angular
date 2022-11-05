@@ -18,4 +18,12 @@ export class AuthService {
       catchError(e => throwError(()=> e) )
     )
   }
+
+  loginUser(payload): Observable<IUserToken> {
+    const url = `${this._const.API_URL}auth/login/`
+    return this._http.post<IUserToken>(url, payload).pipe(
+      map(data => data),
+      catchError(e => throwError(()=> e) )
+    )
+  }
 }

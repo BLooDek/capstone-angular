@@ -20,7 +20,7 @@
 
     <mat-form-field floatLabel="always">
       <mat-label>Password</mat-label>
-      <input formControlName="password1" matInput placeholder="Password" />
+      <input type="password" formControlName="password1" matInput placeholder="Password" />
       <mat-error *ngIf="formGroup.get('password1').hasError('required')"
         >password is required</mat-error
       >
@@ -31,7 +31,7 @@
 
     <mat-form-field floatLabel="always">
       <mat-label>Repeat password</mat-label>
-      <input formControlName="password2" matInput placeholder="Password" />
+      <input type="password" formControlName="password2" matInput placeholder="Password" />
       <mat-error *ngIf="formGroup.get('password2').hasError('required')"
         >password is required</mat-error
       >

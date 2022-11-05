@@ -16,7 +16,7 @@
 
     <mat-form-field floatLabel="always">
       <mat-label>Password</mat-label>
-      <input formControlName="password" matInput placeholder="Password" />
+      <input type="password" formControlName="password" matInput placeholder="Password" />
       <mat-error *ngIf="formGroup.get('password').hasError('required')"
         >password is required</mat-error
       >

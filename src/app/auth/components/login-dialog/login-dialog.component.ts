@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { IModuleState } from '../../state/module.state';
+import * as AuthActions from "../../actions/auth.actions";
 
 @Component({
   selector: 'app-login-dialog',
@@ -24,5 +25,8 @@ export class LoginDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {}
+  onSubmit() {
+    this._store.dispatch(AuthActions.LoginUserAction(this.formGroup.getRawValue()))
+    this._dialogRef.close();
+  }
 }
