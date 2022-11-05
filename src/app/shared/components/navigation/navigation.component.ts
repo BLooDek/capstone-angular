@@ -10,6 +10,7 @@ import {
 import { LoginDialogComponent } from 'src/app/auth/components/login-dialog/login-dialog.component';
 import { IUserData } from '../../../auth/models/auth.models';
 import { AuthState } from '../../../auth/state/auth.state';
+import { ConfirmLogoutComponent } from '../../../auth/components/confirm-logout/confirm-logout.component';
 
 @Component({
   selector: 'app-navigation',
@@ -35,4 +36,8 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  openLogoutDialog() {
+    this.dialog.open(ConfirmLogoutComponent);
+  }
 }

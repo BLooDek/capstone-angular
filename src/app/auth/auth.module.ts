@@ -8,9 +8,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './effects/auth.effects';
 import { AuthService } from './services/auth.service';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
+import { ConfirmLogoutComponent } from './components/confirm-logout/confirm-logout.component';
 
 @NgModule({
-  declarations: [RegisterDialogComponent, LoginDialogComponent],
+  declarations: [RegisterDialogComponent, LoginDialogComponent, ConfirmLogoutComponent],
   imports: [
     CommonModule,
     SharedModule,

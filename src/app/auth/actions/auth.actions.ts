@@ -41,3 +41,12 @@ export const GetUserDataActionError = createAction(
   '[Auth] Get User Data Error',
   props<{ error: any }>()
 );
+
+export const LogoutUserAction = createAction('[Auth] Logout User');
+export const LogoutUserActionSuccess = createAction(
+  '[Auth] Logout User Success'
+);
+export const LogoutUserActionError = createAction(
+  '[Auth] Logout User Error',
+  props<{ error: any }>()
+);

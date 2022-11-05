@@ -15,6 +15,7 @@ export const authReducers = createReducer<AuthState>(
     AuthActions.RegisterUserAction,
     AuthActions.LoginUserAction,
     AuthActions.GetUserDataAction,
+    AuthActions.LogoutUserAction,
     (state) => ({ ...state, loading: true })
   ),
 
@@ -27,11 +28,18 @@ export const authReducers = createReducer<AuthState>(
       token: payload.key,
     })
   ),
+  on(AuthActions.LogoutUserActionSuccess, (state) => ({
+    ...state,
+    token: null,
+    userData: null,
+    loading: false,
+  })),
 
   on(
     AuthActions.RegisterUserActionError,
     AuthActions.LoginUserActionError,
     AuthActions.GetUserDataActionError,
+    AuthActions.LogoutUserActionError,
     (state, payload) => ({
       ...state,
       loading: false,

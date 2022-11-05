@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, shareReplay, switchMap } from 'rxjs';
+import { catchError, map, Observable, of, switchMap } from 'rxjs';
 import { Action, Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { IModuleState } from '../state/module.state';
@@ -17,7 +17,7 @@ export class AuthEffects {
   registerUser$: Observable<Action> = createEffect(() =>
     this._actions$.pipe(
       ofType(AuthActions.RegisterUserAction),
-      shareReplay(),
+
       switchMap((payload) =>
         this._authService.registerUser(payload).pipe(
           map((data) => AuthActions.RegisterUserActionSuccess(data)),
@@ -30,7 +30,7 @@ export class AuthEffects {
   loginUser$: Observable<Action> = createEffect(() =>
     this._actions$.pipe(
       ofType(AuthActions.LoginUserAction),
-      shareReplay(),
+
       switchMap((payload) =>
         this._authService.loginUser(payload).pipe(
           map((data) => AuthActions.LoginUserActionSuccess(data)),
@@ -47,13 +47,24 @@ export class AuthEffects {
         AuthActions.LoginUserActionSuccess,
         AuthActions.RegisterUserActionSuccess
       ),
-      shareReplay(),
       switchMap(() =>
         this._authService.getUserData().pipe(
           map((data) => {
             return AuthActions.GetUserDataActionSuccess(data);
           }),
           catchError((error) => of(AuthActions.GetUserDataActionError(error)))
+        )
+      )
+    )
+  );
+
+  logoutUser$: Observable<Action> = createEffect(() =>
+    this._actions$.pipe(
+      ofType(AuthActions.LogoutUserAction),
+      switchMap(() =>
+        this._authService.logoutUser().pipe(
+          map((_) => AuthActions.LogoutUserActionSuccess()),
+          catchError((error) => of(AuthActions.LogoutUserActionError(error)))
         )
       )
     )
