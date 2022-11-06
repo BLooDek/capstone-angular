@@ -11,6 +11,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { ConstService } from './services/const.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerService } from './services/spinner.service';
 
 const materialModules = [
   MatToolbarModule,
@@ -19,10 +22,11 @@ const materialModules = [
   MatMenuModule,
   MatFormFieldModule,
   MatInputModule,
+  MatProgressSpinnerModule,
 ];
 
 @NgModule({
-  declarations: [NavigationComponent],
+  declarations: [NavigationComponent, SpinnerComponent],
   imports: [
     CommonModule,
     ...materialModules,
@@ -36,6 +40,6 @@ const materialModules = [
     ReactiveFormsModule,
     OverlayModule,
   ],
-  providers: [ConstService],
+  providers: [ConstService, SpinnerService],
 })
 export class SharedModule {}

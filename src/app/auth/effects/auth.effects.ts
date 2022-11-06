@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, switchMap } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
 import { Action, Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { IModuleState } from '../state/module.state';
 import * as AuthActions from '../actions/auth.actions';
 import { AuthService } from '../services/auth.service';
+import { SpinnerService } from '../../shared/services/spinner.service';
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private _actions$: Actions,
     private _store: Store<IModuleState>,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _spinnerService: SpinnerService
   ) {}
 
   registerUser$: Observable<Action> = createEffect(() =>
@@ -68,5 +70,36 @@ export class AuthEffects {
         )
       )
     )
+  );
+
+  enableSpinner$ = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(
+          AuthActions.LoginUserAction,
+          AuthActions.GetUserDataAction,
+          AuthActions.LogoutUserAction,
+          AuthActions.RegisterUserAction
+        ),
+        tap(() => this._spinnerService.spinnerAttach())
+      ),
+    { dispatch: false }
+  );
+  disableSpinner$ = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(
+          AuthActions.LoginUserActionSuccess,
+          AuthActions.LoginUserActionError,
+          AuthActions.GetUserDataActionSuccess,
+          AuthActions.GetUserDataActionError,
+          AuthActions.LogoutUserActionSuccess,
+          AuthActions.LogoutUserActionError,
+          AuthActions.RegisterUserActionSuccess,
+          AuthActions.RegisterUserActionError
+        ),
+        tap(() => this._spinnerService.spinnerDetach())
+      ),
+    { dispatch: false }
   );
 }
