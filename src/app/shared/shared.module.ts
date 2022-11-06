@@ -15,7 +15,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerService } from './services/spinner.service';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 import { BoolToWordPipe } from './pipes/bool-to-word.pipe';
+import { MatButtonModule } from '@angular/material/button';
 
 const materialModules = [
   MatToolbarModule,
@@ -26,6 +28,8 @@ const materialModules = [
   MatInputModule,
   MatProgressSpinnerModule,
   MatListModule,
+  MatCardModule,
+  MatButtonModule,
 ];
 
 @NgModule({

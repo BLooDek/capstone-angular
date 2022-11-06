@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'variables';
 html,
 body {
   height: 100%;
+  box-sizing: border-box;
+
 }
 body {
   margin: 0;
@@ -14,3 +16,18 @@ body {
   flex-direction: column;
   font-size: large;
 }
+label {
+  font-weight: bold;
+  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+}
+
+mat-form-field {
+  margin: 1.6rem 4rem;
+  width: 350px !important;
+}
+.mat-toolbar {
+  min-height: $header-size ;
+  height: $header-size;
+}
+

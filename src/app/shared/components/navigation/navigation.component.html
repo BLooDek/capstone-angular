@@ -6,7 +6,6 @@
   <a routerLink="notes">Notes</a>
   <span class="spacer"></span>
 <span *ngIf="userData$ | async">Hey {{(userData$ | async).email}}</span>
-<!--  Hey {{(userData$ | async).email}}-->
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
   </button>
