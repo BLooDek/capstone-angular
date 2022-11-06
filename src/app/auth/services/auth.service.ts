@@ -39,4 +39,11 @@ export class AuthService {
       catchError((e) => throwError(() => e))
     );
   }
+  checkIfEmailExist(email): Observable<IAuthStatus> {
+    const url = `${this._const.API_URL}auth/valid/${email}`;
+    return this._http.get<IAuthStatus>(url).pipe(
+      map((data) => data),
+      catchError((e) => throwError(() => e))
+    );
+  }
 }

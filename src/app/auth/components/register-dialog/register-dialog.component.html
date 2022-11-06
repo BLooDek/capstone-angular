@@ -3,19 +3,26 @@
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
     <mat-form-field floatLabel="always">
       <mat-label>Email</mat-label>
-      <input
+     <div class="email-input">
+            <input
         formControlName="email"
         matInput
         placeholder="email"
         cdkFocusInitial
       />
+      <mat-spinner diameter="18" *ngIf="(formGroup.get('email').statusChanges | async) === 'PENDING'"></mat-spinner>
+     </div>
+
       <mat-error *ngIf="formGroup?.get('email')?.hasError('required')"
         >email is required</mat-error
       >
-      <!--      <mat-error *ngIf="formGroup?.get('email')?.hasError('email')">email is invalid</mat-error>-->
-      <mat-error *ngIf="formGroup?.get('email')?.hasError('pattern')"
+           <mat-error *ngIf="formGroup?.get('email')?.hasError('pattern')"
         >email is invalid</mat-error
       >
+      <mat-error *ngIf="formGroup?.get('email')?.hasError('emailAlreadyExist')"
+      >email already exist</mat-error
+      >
+<!--      emailAlreadyExist-->
     </mat-form-field>
 
     <mat-form-field floatLabel="always">
@@ -38,14 +45,18 @@
       <mat-error *ngIf="formGroup.get('password2').hasError('minlength')"
         >Password need to be at least 8 characters long</mat-error
       >
+
     </mat-form-field>
+    <mat-error *ngIf="formGroup.hasError('passwordsDontMatch')"
+    >Passwords must match</mat-error
+    >
   </form>
 </div>
 <div mat-dialog-actions align="end">
   <button type="button" mat-button mat-dialog-close>Cancel</button>
   <button
     mat-button
-    [disabled]="formGroup.invalid || formGroup.untouched"
+    [disabled]="formGroup.invalid || formGroup.untouched || (formGroup.get('email').statusChanges | async) === 'PENDING' || (formGroup.get('email').statusChanges | async) === 'INVALID'"
     type="submit"
     (click)="onSubmit()"
   >
