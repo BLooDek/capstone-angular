@@ -5,48 +5,49 @@ import {
   IUserData,
   IUserToken,
 } from '../models/auth.models';
+import { AUTH_ACTION_TYPES } from '../contants/auth.const';
 
 export const RegisterUserAction = createAction(
-  '[Auth] Register User',
+  AUTH_ACTION_TYPES.REGISTER,
   props<IRegisterPayload>()
 );
 export const RegisterUserActionSuccess = createAction(
-  '[Auth] Register User Success',
+  AUTH_ACTION_TYPES.REGISTER_SUCCESS,
   props<IUserToken>()
 );
 export const RegisterUserActionError = createAction(
-  '[Auth] Register User Error',
+  AUTH_ACTION_TYPES.REGISTER_ERROR,
   props<{ error: any }>()
 );
 
 export const LoginUserAction = createAction(
-  '[Auth] Login User',
+  AUTH_ACTION_TYPES.LOGIN,
   props<ILoginPayload>()
 );
 export const LoginUserActionSuccess = createAction(
-  '[Auth] Login User Success',
+  AUTH_ACTION_TYPES.LOGIN_SUCCESS,
   props<IUserToken>()
 );
 export const LoginUserActionError = createAction(
-  '[Auth] Login User Error',
+  AUTH_ACTION_TYPES.LOGIN_ERROR,
   props<{ error: any }>()
 );
 
-export const GetUserDataAction = createAction('[Auth] Get User Data');
+export const GetUserDataAction = createAction(AUTH_ACTION_TYPES.GET_USER_DATA);
 export const GetUserDataActionSuccess = createAction(
-  '[Auth] Get User Data Success',
+  AUTH_ACTION_TYPES.GET_USER_DATA_SUCCESS,
   props<IUserData>()
 );
 export const GetUserDataActionError = createAction(
-  '[Auth] Get User Data Error',
+  AUTH_ACTION_TYPES.GET_USER_DATA_ERROR,
   props<{ error: any }>()
 );
 
-export const LogoutUserAction = createAction('[Auth] Logout User');
+export const LogoutUserAction = createAction(AUTH_ACTION_TYPES.LOGOUT_USER);
 export const LogoutUserActionSuccess = createAction(
-  '[Auth] Logout User Success'
+  AUTH_ACTION_TYPES.LOGOUT_USER_SUCCESS
 );
 export const LogoutUserActionError = createAction(
-  '[Auth] Logout User Error',
+  AUTH_ACTION_TYPES.LOGOUT_USER_ERROR,
   props<{ error: any }>()
 );
