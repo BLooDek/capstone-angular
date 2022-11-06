@@ -9,9 +9,15 @@ import { AuthEffects } from './effects/auth.effects';
 import { AuthService } from './services/auth.service';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { ConfirmLogoutComponent } from './components/confirm-logout/confirm-logout.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 @NgModule({
-  declarations: [RegisterDialogComponent, LoginDialogComponent, ConfirmLogoutComponent],
+  declarations: [
+    RegisterDialogComponent,
+    LoginDialogComponent,
+    ConfirmLogoutComponent,
+    UserInfoComponent,
+  ],
   imports: [
     CommonModule,
     SharedModule,

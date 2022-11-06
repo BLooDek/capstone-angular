@@ -14,6 +14,8 @@ import { ConstService } from './services/const.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerService } from './services/spinner.service';
+import { MatListModule } from '@angular/material/list';
+import { BoolToWordPipe } from './pipes/bool-to-word.pipe';
 
 const materialModules = [
   MatToolbarModule,
@@ -23,10 +25,11 @@ const materialModules = [
   MatFormFieldModule,
   MatInputModule,
   MatProgressSpinnerModule,
+  MatListModule,
 ];
 
 @NgModule({
-  declarations: [NavigationComponent, SpinnerComponent],
+  declarations: [NavigationComponent, SpinnerComponent, BoolToWordPipe],
   imports: [
     CommonModule,
     ...materialModules,
@@ -39,6 +42,7 @@ const materialModules = [
     ...materialModules,
     ReactiveFormsModule,
     OverlayModule,
+    BoolToWordPipe,
   ],
   providers: [ConstService, SpinnerService],
 })

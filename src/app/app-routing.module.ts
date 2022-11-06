@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
+import { UserInfoComponent } from './auth/components/user-info/user-info.component';
 //  TODO: add nice styling :)
 const routes: Routes = [
   // TODO: add pages
-  { path: 'home', component: NavigationComponent },
+  {
+    path: 'home',
+    component: UserInfoComponent,
+  },
   { path: 'notes', component: NavigationComponent },
   { path: 'calendar', component: NavigationComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // redirect to
