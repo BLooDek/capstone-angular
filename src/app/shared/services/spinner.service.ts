@@ -14,7 +14,7 @@ export class SpinnerService {
     this.overlayRef.attach(new ComponentPortal(SpinnerComponent));
   }
   spinnerDetach(): void {
-    this.overlayRef.dispose();
+    this.overlayRef.detach();
   }
 
   private cdkOverlayCreate(): OverlayRef {
