@@ -62,6 +62,7 @@
     [disabled]="formGroup.invalid || formGroup.untouched || (formGroup.get('email').statusChanges | async) === 'PENDING' || (formGroup.get('email').statusChanges | async) === 'INVALID'"
     type="submit"
     (click)="onSubmit()"
+    color="primary"
   >
     Register
   </button>

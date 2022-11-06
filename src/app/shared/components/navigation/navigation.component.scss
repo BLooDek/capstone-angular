@@ -6,16 +6,5 @@ mat-toolbar {
   span {
     padding: 0 2rem;
   }
-  a {
-    padding: 1rem;
-    // background-color: lightgray;
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
-    text-decoration: none;
-    color: black;
-    &:hover {
-      background-color: lightgray;
-    }
-  }
+
 }

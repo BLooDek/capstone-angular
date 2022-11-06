@@ -1,7 +1,7 @@
 import { IUserData } from '../models/auth.models';
 
 export interface AuthState {
-  loading: boolean; //TODO: MOVE LOADING TO ROOT STATE
+  loading: boolean;
   errors: any;
   token: string | null;
   userData: IUserData | null;

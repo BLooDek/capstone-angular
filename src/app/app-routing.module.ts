@@ -5,7 +5,6 @@ import { UserInfoComponent } from './auth/components/user-info/user-info.compone
 import { AuthGuard } from './auth/guards/auth.guard';
 //  TODO: add nice styling :)
 const routes: Routes = [
-  // TODO: add pages
   {
     path: 'home',
     component: UserInfoComponent,
