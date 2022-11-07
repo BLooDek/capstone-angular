@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IModuleState } from '../../state/module.state';
 import { Store } from '@ngrx/store';
-import { IUserData } from '../../models/auth.models';
 import { Observable, shareReplay } from 'rxjs';
 import { selectUserData } from '../../selectors/auth.selectors';
+import { IUserData } from '../../../shared/models/shared.models';
 
 @Component({
   selector: 'app-user-info',
@@ -16,7 +16,6 @@ export class UserInfoComponent implements OnInit {
   constructor(private _store: Store<IModuleState>) {
     this.userInfo$ = _store.select(selectUserData).pipe(shareReplay(1));
   }
-  //Add pipe for boolens to make them YES/NO
 
   ngOnInit(): void {}
 }

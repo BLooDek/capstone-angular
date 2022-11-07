@@ -8,9 +8,9 @@ import {
   selectUserData,
 } from '../../../auth/selectors/auth.selectors';
 import { LoginDialogComponent } from 'src/app/auth/components/login-dialog/login-dialog.component';
-import { IUserData } from '../../../auth/models/auth.models';
 import { AuthState } from '../../../auth/state/auth.state';
 import { ConfirmLogoutComponent } from '../../../auth/components/confirm-logout/confirm-logout.component';
+import { IUserData } from '../../models/shared.models';
 
 @Component({
   selector: 'app-navigation',

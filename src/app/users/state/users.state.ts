@@ -1,8 +1,7 @@
 import { IUserData } from '../../shared/models/shared.models';
 
-export interface AuthState {
+export interface UsersState {
   loading: boolean;
   errors: any;
-  token: string | null;
-  userData: IUserData | null;
+  tableData: IUserData[];
 }

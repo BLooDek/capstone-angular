@@ -2,10 +2,10 @@ import { createAction, props } from '@ngrx/store';
 import {
   ILoginPayload,
   IRegisterPayload,
-  IUserData,
   IUserToken,
 } from '../models/auth.models';
 import { AUTH_ACTION_TYPES } from '../contants/auth.const';
+import { IUserData } from '../../shared/models/shared.models';
 
 export const RegisterUserAction = createAction(
   AUTH_ACTION_TYPES.REGISTER,

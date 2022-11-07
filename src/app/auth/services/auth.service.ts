@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { ConstService } from '../../shared/services/const.service';
-import { IAuthStatus, IUserData, IUserToken } from '../models/auth.models';
+import { IAuthStatus, IUserToken } from '../models/auth.models';
+import { IUserData } from '../../shared/models/shared.models';
 
 @Injectable()
 export class AuthService {
