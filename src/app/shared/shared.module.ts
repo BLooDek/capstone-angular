@@ -18,6 +18,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { BoolToWordPipe } from './pipes/bool-to-word.pipe';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const materialModules = [
   MatToolbarModule,
@@ -30,6 +32,8 @@ const materialModules = [
   MatListModule,
   MatCardModule,
   MatButtonModule,
+  MatTableModule,
+  MatPaginatorModule,
 ];
 
 @NgModule({
