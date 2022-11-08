@@ -2,7 +2,7 @@
 ><span>Capstone😎</span>
 
   <a mat-button routerLinkActive="mat-accent" routerLink="home">My info</a>
-  <a mat-button routerLinkActive="mat-accent" routerLink="users">Users</a>
+  <a mat-button routerLinkActive="mat-accent" [routerLink]="['users', '1']">Users</a>
   <a mat-button routerLinkActive="mat-accent" routerLink="notes">Notes</a>
   <span class="spacer"></span>
   <span *ngIf="userData$ | async">Hey {{(userData$ | async).email}}</span>

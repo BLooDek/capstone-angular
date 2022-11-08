@@ -8,7 +8,7 @@
   <mat-list-item role="listitem">SuperAdmin: {{userInfo.is_superuser | boolToWord }}</mat-list-item>
 </mat-list>
 <ng-template #callToAction>
-  <p >Login to see your data😉</p>
+  <p><a (click)="openLoginDialog()">Login</a> or <a (click)="openRegisterDialog()">register</a> to see your data😉</p>
 </ng-template>
 
 
