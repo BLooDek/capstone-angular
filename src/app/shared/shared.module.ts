@@ -21,6 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackBarService } from './services/snack.service';
 
 const materialModules = [
   MatToolbarModule,
@@ -36,6 +38,7 @@ const materialModules = [
   MatTableModule,
   MatPaginatorModule,
   TextFieldModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({
@@ -54,6 +57,6 @@ const materialModules = [
     OverlayModule,
     BoolToWordPipe,
   ],
-  providers: [ConstService, SpinnerService],
+  providers: [ConstService, SpinnerService, SnackBarService],
 })
 export class SharedModule {}

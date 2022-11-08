@@ -6,6 +6,7 @@ import { NotebookService } from '../services/notebook.service';
 import { IModuleState } from '../state/module.state';
 import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
 import * as NotebookActions from '../actions/notebook.actions';
+import { SnackBarService } from '../../shared/services/snack.service';
 
 @Injectable()
 export class NotebookEffects {
@@ -13,7 +14,8 @@ export class NotebookEffects {
     private _actions$: Actions,
     private _store: Store<IModuleState>,
     private _notebookService: NotebookService,
-    private _spinnerService: SpinnerService
+    private _spinnerService: SpinnerService,
+    private _snackService: SnackBarService
   ) {}
 
   getNotes$: Observable<Action> = createEffect(() =>
@@ -57,7 +59,8 @@ export class NotebookEffects {
           NotebookActions.AddNoteActionSuccess,
           NotebookActions.AddNoteActionError
         ),
-        tap(() => this._spinnerService.spinnerDetach())
+        tap(() => this._spinnerService.spinnerDetach()),
+        tap((action) => this._snackService.openSnackBar(action.type, 'Ok'))
       ),
     { dispatch: false }
   );

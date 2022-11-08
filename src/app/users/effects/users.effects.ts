@@ -6,6 +6,7 @@ import { SpinnerService } from '../../shared/services/spinner.service';
 import { UsersService } from '../services/users.service';
 import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
 import * as UsersActions from '../actions/users.actions';
+import { SnackBarService } from '../../shared/services/snack.service';
 
 @Injectable()
 export class UsersEffects {
@@ -13,7 +14,8 @@ export class UsersEffects {
     private _actions$: Actions,
     private _store: Store<IModuleState>,
     private _spinnerService: SpinnerService,
-    private _usersService: UsersService
+    private _usersService: UsersService,
+    private _snackService: SnackBarService
   ) {}
 
   getTableData$: Observable<Action> = createEffect(() =>
@@ -47,7 +49,8 @@ export class UsersEffects {
           UsersActions.GetUsersDataActionSuccess,
           UsersActions.GetUsersDataActionError
         ),
-        tap(() => this._spinnerService.spinnerDetach())
+        tap(() => this._spinnerService.spinnerDetach()),
+        tap((action) => this._snackService.openSnackBar(action.type, 'Ok'))
       ),
     { dispatch: false }
   );

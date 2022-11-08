@@ -1,14 +1,20 @@
-<mat-list role="list" *ngIf="(userInfo$ | async) as userInfo; else callToAction">
-  <mat-list-item role="listitem">Email: {{userInfo.email}}</mat-list-item>
-  <mat-list-item role="listitem">Name: {{userInfo.name ?? 'Not set' }}</mat-list-item>
-  <mat-list-item role="listitem">Date joined:  {{userInfo.date_joined | date:'medium' }}</mat-list-item>
-  <mat-list-item role="listitem">Last login {{userInfo.last_login | date:'medium' }}</mat-list-item>
-  <mat-list-item role="listitem">Account active: {{userInfo.is_active | boolToWord }}</mat-list-item>
-  <mat-list-item role="listitem">Admin: {{userInfo.is_staff | boolToWord }}</mat-list-item>
-  <mat-list-item role="listitem">SuperAdmin: {{userInfo.is_superuser | boolToWord }}</mat-list-item>
-</mat-list>
-<ng-template #callToAction>
-  <p><a (click)="openLoginDialog()">Login</a> or <a (click)="openRegisterDialog()">register</a> to see your data😉</p>
-</ng-template>
+<div class="container">
+  <mat-card *ngIf="(userInfo$ | async) as userInfo; else callToAction">
+    <mat-list role="list">
+      <mat-card-title>{{userInfo.email}}</mat-card-title>
+      <mat-list-item role="listitem">Name: {{userInfo.name ?? 'Not set' }}</mat-list-item>
+      <mat-list-item role="listitem">Date joined:  {{userInfo.date_joined | date:'medium' }}</mat-list-item>
+      <mat-list-item role="listitem">Last login {{userInfo.last_login | date:'medium' }}</mat-list-item>
+      <mat-list-item role="listitem">Account active: {{userInfo.is_active | boolToWord }}</mat-list-item>
+      <mat-list-item role="listitem">Admin: {{userInfo.is_staff | boolToWord }}</mat-list-item>
+      <mat-list-item role="listitem">SuperAdmin: {{userInfo.is_superuser | boolToWord }}</mat-list-item>
+    </mat-list>
+  </mat-card>
+  <ng-template class="card" #callToAction>
+    <mat-card>
+      <p><a (click)="openLoginDialog()">Login</a> or <a (click)="openRegisterDialog()">register </a>to see your data😉
+      </p>
+    </mat-card>
+  </ng-template>
 
-
+</div>

@@ -6,6 +6,7 @@ import { IModuleState } from '../state/module.state';
 import * as AuthActions from '../actions/auth.actions';
 import { AuthService } from '../services/auth.service';
 import { SpinnerService } from '../../shared/services/spinner.service';
+import { SnackBarService } from '../../shared/services/snack.service';
 
 @Injectable()
 export class AuthEffects {
@@ -13,7 +14,8 @@ export class AuthEffects {
     private _actions$: Actions,
     private _store: Store<IModuleState>,
     private _authService: AuthService,
-    private _spinnerService: SpinnerService
+    private _spinnerService: SpinnerService,
+    private _snackService: SnackBarService
   ) {}
 
   registerUser$: Observable<Action> = createEffect(() =>
@@ -81,7 +83,8 @@ export class AuthEffects {
           AuthActions.LogoutUserAction,
           AuthActions.RegisterUserAction
         ),
-        tap(() => this._spinnerService.spinnerAttach())
+        tap(() => this._spinnerService.spinnerAttach()),
+        tap((action) => this._snackService.openSnackBar(action.type, 'Ok'))
       ),
     { dispatch: false }
   );
@@ -98,7 +101,8 @@ export class AuthEffects {
           AuthActions.RegisterUserActionSuccess,
           AuthActions.RegisterUserActionError
         ),
-        tap(() => this._spinnerService.spinnerDetach())
+        tap(() => this._spinnerService.spinnerDetach()),
+        tap((action) => this._snackService.openSnackBar(action.type, 'Ok'))
       ),
     { dispatch: false }
   );
