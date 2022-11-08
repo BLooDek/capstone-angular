@@ -5,14 +5,17 @@ import { SpinnerComponent } from '../components/spinner/spinner.component';
 
 @Injectable()
 export class SpinnerService {
-  private overlayRef: OverlayRef = this.cdkOverlayCreate();
+  private overlayRef: OverlayRef;
+  // = this.cdkOverlayCreate();
 
   constructor(private overlay: Overlay) {}
   spinnerAttach(): void {
+    this.overlayRef = this.cdkOverlayCreate();
     this.overlayRef.attach(new ComponentPortal(SpinnerComponent));
   }
   spinnerDetach(): void {
     this.overlayRef.detach();
+    this.overlayRef.dispose();
   }
 
   private cdkOverlayCreate(): OverlayRef {

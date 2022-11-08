@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { IModuleState } from '../../state/module.state';
 import { IUserData } from '../../../shared/models/shared.models';
 import { Store } from '@ngrx/store';
@@ -7,7 +12,7 @@ import {
   selectLoading,
   selectTableData,
 } from '../../selectors/users.selectors';
-import { first, map, Observable, tap } from 'rxjs';
+import { first, map, Observable, shareReplay, tap } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { USER_TABLE_COLUMNS } from '../../constants/users.const';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -38,16 +43,10 @@ export class UsersComponent {
         data.paginator = this.paginator;
       })
     );
-    const pageRequest = {
-      pageSize: 10,
-      pageIndex: 0,
-      length: 0,
-    };
-    this.changePage(pageRequest);
   }
 
   changePage(event?: PageEvent) {
-    this._router.navigate(['/users', +event.pageIndex + 1]);
+    this._router.navigate(['/users', event.pageIndex + 1]);
     return event;
   }
 }

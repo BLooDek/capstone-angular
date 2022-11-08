@@ -14,21 +14,15 @@ const routes: Routes = [
       import('./notebook/notebook.module').then((m) => m.NotebookModule),
     canActivate: [AuthGuard],
   },
-  {
-    path: 'users',
-    loadChildren: () =>
-      import('./users/users.module').then((m) => m.UsersModule),
-    canActivate: [AuthGuard],
-  },
+  { path: 'users', redirectTo: 'users/1', pathMatch: 'full' },
   {
     path: 'users/:id',
     loadChildren: () =>
       import('./users/users.module').then((m) => m.UsersModule),
     canActivate: [AuthGuard],
   },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }, // redirect to
-  // { path: '**', component: PageNotFoundComponent }, TODO: add 404 page
-  // { path: '**', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

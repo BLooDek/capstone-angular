@@ -4,9 +4,19 @@ import { Action, Store } from '@ngrx/store';
 import { IModuleState } from '../../auth/state/module.state';
 import { SpinnerService } from '../../shared/services/spinner.service';
 import { UsersService } from '../services/users.service';
-import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
+import {
+  catchError,
+  map,
+  Observable,
+  of,
+  shareReplay,
+  skipUntil,
+  switchMap,
+  tap,
+} from 'rxjs';
 import * as UsersActions from '../actions/users.actions';
 import { SnackBarService } from '../../shared/services/snack.service';
+import { selectLoading } from '../selectors/users.selectors';
 
 @Injectable()
 export class UsersEffects {
@@ -20,14 +30,17 @@ export class UsersEffects {
 
   getTableData$: Observable<Action> = createEffect(() =>
     this._actions$.pipe(
+      skipUntil(this._store.select(selectLoading)),
       ofType(UsersActions.GetUsersDataAction),
-
       switchMap(() =>
         this._usersService.getTableData().pipe(
           map((data) =>
             UsersActions.GetUsersDataActionSuccess({ payload: data })
           ),
-          catchError((error) => of(UsersActions.GetUsersDataActionError(error)))
+          catchError((error) =>
+            of(UsersActions.GetUsersDataActionError(error))
+          ),
+          shareReplay()
         )
       )
     )
