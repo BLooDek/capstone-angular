@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Add note</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
+    <mat-form-field floatLabel="always">
+      <mat-label>Title</mat-label>
+      <input
+        formControlName="title"
+        matInput
+        placeholder="title"
+        cdkFocusInitial
+      />
+      <mat-error *ngIf="formGroup?.get('title')?.hasError('required')"
+      >required
+      </mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always">
+      <mat-label>body</mat-label>
+      <textarea type="text" formControlName="body" matInput placeholder="..."></textarea>
+      <mat-error *ngIf="formGroup.get('body').hasError('required')"
+      >required
+      </mat-error
+      >
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" type="submit" (click)="onSubmit()" [disabled]="formGroup.invalid || formGroup.untouched ">Add</button>
+</div>

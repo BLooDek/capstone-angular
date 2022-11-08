@@ -20,6 +20,7 @@ import { BoolToWordPipe } from './pipes/bool-to-word.pipe';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 const materialModules = [
   MatToolbarModule,
@@ -34,6 +35,7 @@ const materialModules = [
   MatButtonModule,
   MatTableModule,
   MatPaginatorModule,
+  TextFieldModule,
 ];
 
 @NgModule({

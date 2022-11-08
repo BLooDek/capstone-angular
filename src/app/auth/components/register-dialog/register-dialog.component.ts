@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -21,7 +21,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./register-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RegisterDialogComponent implements OnInit {
+export class RegisterDialogComponent {
   loading$: Observable<boolean>;
   formGroup: FormGroup;
 
@@ -54,7 +54,6 @@ export class RegisterDialogComponent implements OnInit {
       }
     );
   }
-  ngOnInit(): void {}
 
   passwordsMatchValidator(): ValidatorFn {
     return (formGroup: FormGroup) => {

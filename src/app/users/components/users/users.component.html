@@ -1,6 +1,4 @@
-
-<!--{{tableData$ | async}}-->
-<div class="mat-elevation-z8">
+<div *ngIf="!(loading$ | async)" class="mat-elevation-z8">
   <table mat-table [dataSource]="(dataSource$ | async)">
 
     <!-- Email Column -->
@@ -49,7 +47,9 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  <mat-paginator
+
+    pageSize="20"
                  showFirstLastButtons
                  aria-label="Select page of periodic elements">
   </mat-paginator>

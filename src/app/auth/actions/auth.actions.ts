@@ -3,7 +3,7 @@ import {
   ILoginPayload,
   IRegisterPayload,
   IUserToken,
-} from '../models/auth.models';
+} from '../models/auth.interface';
 import { AUTH_ACTION_TYPES } from '../contants/auth.const';
 import { IUserData } from '../../shared/models/shared.models';
 

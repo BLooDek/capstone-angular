@@ -1,9 +1,17 @@
-<div class="notebook-card">
+<div class="notebook-card" *ngIf="!(notes$ | async); else notes">
   <mat-card class="no-content-container">
     <mat-card-title>No content🥺</mat-card-title>
     <mat-card-subtitle>add something...</mat-card-subtitle>
-    <button mat-fab color="primary" aria-label="add notes button"><mat-icon>add_circle</mat-icon></button>
+    <button mat-fab color="primary" aria-label="add notes button" (click)="openAddDialog()"><mat-icon>add_circle</mat-icon></button>
   </mat-card>
 </div>
+<ng-template #notes>
+  <div *ngFor="let note of (notes$ | async)">
+    <h1>{{note.title}}</h1>
+    <p>{{note.body}}</p>
+  </div>
+</ng-template>
+
+
 
 

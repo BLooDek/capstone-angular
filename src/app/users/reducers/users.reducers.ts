@@ -12,10 +12,10 @@ export const usersReducers = createReducer<UsersState>(
   initialUsersState,
   on(UsersActions.GetUsersDataAction, (state) => ({ ...state, loading: true })),
 
-  on(UsersActions.GetUsersDataActionSuccess, (state, payload) => ({
+  on(UsersActions.GetUsersDataActionSuccess, (state, { payload }) => ({
     ...state,
     loading: false,
-    tableData: payload.payload,
+    tableData: payload,
   })),
 
   on(UsersActions.GetUsersDataActionError, (state, payload) => ({

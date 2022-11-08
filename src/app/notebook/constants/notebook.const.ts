@@ -1,0 +1,8 @@
+export enum NOTEBOOK_ACTION_TYPES {
+  GET_NOTES_ACTION = '[NOTEBOOK] Get Notes',
+  GET_NOTES_ACTION_SUCCESS = '[NOTEBOOK] Get Notes Success',
+  GET_NOTES_ACTION_ERROR = '[NOTEBOOK] Get Notes Error',
+  ADD_NOTE_ACTION = '[NOTEBOOK] Add Notes',
+  ADD_NOTE_ACTION_SUCCESS = '[NOTEBOOK] Add Notes Success',
+  ADD_NOTE_ACTION_ERROR = '[NOTEBOOK] Add Notes Error',
+}

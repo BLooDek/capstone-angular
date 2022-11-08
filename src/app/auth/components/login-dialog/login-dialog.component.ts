@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
@@ -11,7 +11,7 @@ import * as AuthActions from '../../actions/auth.actions';
   styleUrls: ['./login-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginDialogComponent implements OnInit {
+export class LoginDialogComponent {
   formGroup: FormGroup;
   constructor(
     private _store: Store<IModuleState>,
@@ -23,8 +23,6 @@ export class LoginDialogComponent implements OnInit {
       password: ['', [Validators.required]],
     });
   }
-
-  ngOnInit(): void {}
 
   onSubmit() {
     this._store.dispatch(

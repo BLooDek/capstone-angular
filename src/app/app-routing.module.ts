@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavigationComponent } from './shared/components/navigation/navigation.component';
 import { UserInfoComponent } from './auth/components/user-info/user-info.component';
 import { AuthGuard } from './auth/guards/auth.guard';
 //  TODO: add nice styling :)
@@ -13,7 +12,7 @@ const routes: Routes = [
     path: 'notes',
     loadChildren: () =>
       import('./notebook/notebook.module').then((m) => m.NotebookModule),
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'users',
