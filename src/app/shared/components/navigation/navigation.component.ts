@@ -29,7 +29,6 @@ export class NavigationComponent implements OnInit {
 
   openRegisterDialog() {
     this.dialog.open(RegisterDialogComponent);
-    // dialogRef.afterClosed().subscribe((e) => console.log(e));
   }
   openLoginDialog() {
     this.dialog.open(LoginDialogComponent);

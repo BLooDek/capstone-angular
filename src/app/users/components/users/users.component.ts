@@ -38,19 +38,16 @@ export class UsersComponent {
         data.paginator = this.paginator;
       })
     );
-    this._activatedRoute.params.pipe(first()).subscribe((param) => {
-      const id = +param['id'] - 1;
-      const pageRequest = {
-        pageSize: 10,
-        pageIndex: id,
-        length: 0,
-      };
-      this.changePage(pageRequest);
-    });
+    const pageRequest = {
+      pageSize: 10,
+      pageIndex: 0,
+      length: 0,
+    };
+    this.changePage(pageRequest);
   }
 
   changePage(event?: PageEvent) {
-    this._router.navigateByUrl(`users/${+event.pageIndex + 1}`);
+    this._router.navigate(['/users', +event.pageIndex + 1]);
     return event;
   }
 }
