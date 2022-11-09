@@ -28,3 +28,19 @@
     </mat-form-field>
   </form>
 </div>
+
+<div mat-dialog-actions align="end">
+  <button type="button" mat-button mat-dialog-close>Cancel</button>
+  <button type="button" mat-button color="warn" (click)="onDelete()">
+    Delete
+  </button>
+  <button
+    mat-button
+    [disabled]="formGroup.invalid || formGroup.untouched"
+    type="submit"
+    (click)="onSubmit()"
+    color="primary"
+  >
+    Update
+  </button>
+</div>

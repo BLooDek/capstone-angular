@@ -1,6 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { NOTEBOOK_ACTION_TYPES } from '../constants/notebook.const';
-import { INote, INotePayload } from '../models/notebook.interface';
+import {
+  INote,
+  INotePayload,
+  INoteUpdatePayload,
+} from '../models/notebook.interface';
 
 export const GetNotesAction = createAction(
   NOTEBOOK_ACTION_TYPES.GET_NOTES_ACTION
@@ -24,5 +28,17 @@ export const AddNoteActionSuccess = createAction(
 );
 export const AddNoteActionError = createAction(
   NOTEBOOK_ACTION_TYPES.ADD_NOTE_ACTION_ERROR,
+  props<{ error: any }>()
+);
+export const EditNoteAction = createAction(
+  NOTEBOOK_ACTION_TYPES.UPDATE_NOTE_ACTION,
+  props<INoteUpdatePayload>()
+);
+export const EditNoteActionSuccess = createAction(
+  NOTEBOOK_ACTION_TYPES.UPDATE_NOTE_ACTION_SUCCESS,
+  props<{ note: INote }>()
+);
+export const EditNoteActionError = createAction(
+  NOTEBOOK_ACTION_TYPES.UPDATE_NOTE_ACTION_ERROR,
   props<{ error: any }>()
 );

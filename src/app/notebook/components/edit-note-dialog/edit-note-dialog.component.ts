@@ -29,5 +29,13 @@ export class EditNoteDialogComponent {
       is_published: [this.data.is_published],
     });
   }
-  onSubmit() {}
+  onSubmit() {
+    this._dialogRef.close(this.formGroup.getRawValue());
+  }
+  onDelete() {
+    this._dialogRef.close({
+      ...this.formGroup.getRawValue(),
+      is_published: false,
+    });
+  }
 }

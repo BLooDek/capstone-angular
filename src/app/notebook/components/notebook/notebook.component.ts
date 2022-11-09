@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { IModuleState } from '../../state/module.state';
 import { INote } from '../../models/notebook.interface';
 import { selectNotes } from '../../selectors/notebook.selectors';
-import { Observable, shareReplay } from 'rxjs';
+import { first, Observable, shareReplay } from 'rxjs';
 import * as NotebookActions from '../../actions/notebook.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNoteDialogComponent } from '../add-note-dialog/add-note-dialog.component';
@@ -18,7 +18,7 @@ export class NotebookComponent implements OnInit {
   notes$: Observable<INote[]>;
   constructor(private _store: Store<IModuleState>, private _dialog: MatDialog) {
     this._store.dispatch(NotebookActions.GetNotesAction());
-    this.notes$ = _store.select(selectNotes).pipe(shareReplay(1));
+    this.notes$ = _store.select(selectNotes);
   }
   openAddDialog(): void {
     this._dialog.open(AddNoteDialogComponent);
@@ -27,7 +27,16 @@ export class NotebookComponent implements OnInit {
   ngOnInit(): void {}
 
   openEdit(note: INote) {
-    this._dialog.open(EditNoteDialogComponent, { data: note });
-    console.log(note);
+    const dialogRef = this._dialog.open(EditNoteDialogComponent, {
+      data: note,
+    });
+    dialogRef
+      .afterClosed()
+      .pipe(first())
+      .subscribe((e) => {
+        if (e.is_published) {
+          this._store.dispatch(NotebookActions.EditNoteAction(e));
+        }
+      });
   }
 }

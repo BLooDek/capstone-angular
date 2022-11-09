@@ -12,3 +12,9 @@ export interface INotePayload {
   title: string;
   body: string;
 }
+export interface INoteUpdatePayload {
+  id: string;
+  title: string;
+  body: string;
+  is_published: boolean;
+}

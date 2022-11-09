@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { NotebookState } from '../state/nootebook.state';
 import * as NotebookActions from '../actions/notebook.actions';
+import { INote } from '../models/notebook.interface';
 
 export const initialNotebookState: any = {
   loading: false,
@@ -33,5 +34,20 @@ export const notebookReducers = createReducer<NotebookState>(
       loading: false,
       errors: payload.error,
     })
-  )
+  ),
+  on(NotebookActions.EditNoteActionSuccess, (state, payload) => {
+    const editedIndex = state.notes.findIndex(
+      (obj) => obj.id === payload.note.id
+    );
+    const newArr = state.notes.map((note, idx) =>
+      idx === editedIndex ? payload.note : note
+    );
+    return {
+      ...state,
+      loading: false,
+      notes: newArr,
+    };
+  })
 );
+
+//map filter for deletiiing
