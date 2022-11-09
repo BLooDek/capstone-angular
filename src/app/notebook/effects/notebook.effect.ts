@@ -54,13 +54,30 @@ export class NotebookEffects {
     )
   );
 
+  deleteNote$: Observable<Action> = createEffect(() =>
+    this._actions$.pipe(
+      ofType(NotebookActions.DeleteNoteAction),
+      switchMap((payload) =>
+        this._notebookService.addNote(payload).pipe(
+          map((data) =>
+            NotebookActions.DeleteNoteActionSuccess({ note: data })
+          ),
+          catchError((error) =>
+            of(NotebookActions.DeleteNoteeActionError(error))
+          )
+        )
+      )
+    )
+  );
+
   enableSpinner$ = createEffect(
     () =>
       this._actions$.pipe(
         ofType(
           NotebookActions.AddNoteAction,
           NotebookActions.GetNotesAction,
-          NotebookActions.EditNoteAction
+          NotebookActions.EditNoteAction,
+          NotebookActions.DeleteNoteAction
         ),
         tap(() => this._spinnerService.spinnerAttach())
       ),
@@ -75,7 +92,9 @@ export class NotebookEffects {
           NotebookActions.GetNotesActionSuccess,
           NotebookActions.GetNotesActionError,
           NotebookActions.AddNoteActionSuccess,
-          NotebookActions.AddNoteActionError
+          NotebookActions.AddNoteActionError,
+          NotebookActions.DeleteNoteActionSuccess,
+          NotebookActions.DeleteNoteeActionError
         ),
         tap(() => this._spinnerService.spinnerDetach()),
         tap((action) => this._snackService.openSnackBar(action.type, 'Ok'))

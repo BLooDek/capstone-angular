@@ -34,8 +34,11 @@ export class NotebookComponent implements OnInit {
       .afterClosed()
       .pipe(first())
       .subscribe((e) => {
-        if (e.is_published) {
+        if (e && e.is_published) {
           this._store.dispatch(NotebookActions.EditNoteAction(e));
+        }
+        if (e && !e.is_published) {
+          this._store.dispatch(NotebookActions.DeleteNoteAction(e));
         }
       });
   }

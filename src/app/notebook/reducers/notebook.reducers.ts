@@ -41,7 +41,7 @@ export const notebookReducers = createReducer<NotebookState>(
     );
     const newArr = state.notes.map((note, idx) =>
       idx === editedIndex ? payload.note : note
-    );
+    ); //TODO use id instead of idx
     return {
       ...state,
       loading: false,
