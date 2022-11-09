@@ -13,9 +13,10 @@ import { NotebookEffects } from './effects/notebook.effect';
 import { NotebookService } from './services/notebook.service';
 import { AddNoteDialogComponent } from './components/add-note-dialog/add-note-dialog.component';
 import { NoteCardComponent } from './components/note-card/note-card.component';
+import { EditNoteDialogComponent } from './components/edit-note-dialog/edit-note-dialog.component';
 
 @NgModule({
-  declarations: [NotebookComponent, AddNoteDialogComponent, NoteCardComponent],
+  declarations: [NotebookComponent, AddNoteDialogComponent, NoteCardComponent, EditNoteDialogComponent],
   imports: [
     CommonModule,
     SharedModule,

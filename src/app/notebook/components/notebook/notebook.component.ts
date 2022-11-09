@@ -7,6 +7,7 @@ import { Observable, shareReplay } from 'rxjs';
 import * as NotebookActions from '../../actions/notebook.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNoteDialogComponent } from '../add-note-dialog/add-note-dialog.component';
+import { EditNoteDialogComponent } from '../edit-note-dialog/edit-note-dialog.component';
 @Component({
   selector: 'app-notebook',
   templateUrl: './notebook.component.html',
@@ -26,6 +27,7 @@ export class NotebookComponent implements OnInit {
   ngOnInit(): void {}
 
   openEdit(note: INote) {
+    this._dialog.open(EditNoteDialogComponent, { data: note });
     console.log(note);
   }
 }
