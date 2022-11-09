@@ -6,8 +6,14 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { first } from 'rxjs';
 import { INote } from '../../models/notebook.interface';
+import { ConfirmDeleteNoteComponent } from '../confirm-delete-note/confirm-delete-note.component';
 
 @Component({
   selector: 'app-edit-note-dialog',
@@ -20,7 +26,8 @@ export class EditNoteDialogComponent {
   constructor(
     private _fb: FormBuilder,
     private _dialogRef: MatDialogRef<EditNoteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: INote
+    @Inject(MAT_DIALOG_DATA) public data: INote,
+    private _dialog: MatDialog
   ) {
     this.formGroup = _fb.group({
       id: [this.data.id],
@@ -33,9 +40,19 @@ export class EditNoteDialogComponent {
     this._dialogRef.close(this.formGroup.getRawValue());
   }
   onDelete() {
-    this._dialogRef.close({
-      ...this.formGroup.getRawValue(),
-      is_published: false,
+    const confirmDialogRef = this._dialog.open(ConfirmDeleteNoteComponent, {
+      data: this.data.title,
     });
+    confirmDialogRef
+      .afterClosed()
+      .pipe(first())
+      .subscribe((e) => {
+        if (e) {
+          this._dialogRef.close({
+            ...this.formGroup.getRawValue(),
+            is_published: false,
+          });
+        }
+      });
   }
 }

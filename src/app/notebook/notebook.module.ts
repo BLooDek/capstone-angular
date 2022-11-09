@@ -14,9 +14,10 @@ import { NotebookService } from './services/notebook.service';
 import { AddNoteDialogComponent } from './components/add-note-dialog/add-note-dialog.component';
 import { NoteCardComponent } from './components/note-card/note-card.component';
 import { EditNoteDialogComponent } from './components/edit-note-dialog/edit-note-dialog.component';
+import { ConfirmDeleteNoteComponent } from './components/confirm-delete-note/confirm-delete-note.component';
 
 @NgModule({
-  declarations: [NotebookComponent, AddNoteDialogComponent, NoteCardComponent, EditNoteDialogComponent],
+  declarations: [NotebookComponent, AddNoteDialogComponent, NoteCardComponent, EditNoteDialogComponent, ConfirmDeleteNoteComponent],
   imports: [
     CommonModule,
     SharedModule,
