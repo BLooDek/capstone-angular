@@ -29,4 +29,6 @@ mat-form-field {
   min-height: $header-size ;
   height: $header-size;
 }
-
+.spacer {
+  flex: 1 1 auto;
+}

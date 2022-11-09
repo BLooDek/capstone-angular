@@ -15,3 +15,21 @@
   width: 50%;
   align-items: center
 }
+.content-container {
+  position: relative;
+  margin-top: 2rem;
+  min-height: calc(#{-$header-size} - 2rem + 100vh);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  gap: 1rem;
+
+}
+
+.mat-fab-button-add {
+  position: fixed;
+  bottom: 4rem;
+  right: 4rem;
+  z-index: 1000;
+}

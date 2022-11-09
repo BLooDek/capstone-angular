@@ -6,10 +6,13 @@
   </mat-card>
 </div>
 <ng-template #notes>
-  <div *ngFor="let note of (notes$ | async)">
-    <h1>{{note.title}}</h1>
-    <p>{{note.body}}</p>
+  <div class="content-container">
+    <button class="mat-fab-button-add" mat-fab color="primary" aria-label="add notes button" (click)="openAddDialog()"><mat-icon>add_circle</mat-icon></button>
+    <div *ngFor="let note of (notes$ | async)">
+      <app-note-card (click)="openEdit(note)" [item]="note"></app-note-card>
+    </div>
   </div>
+
 </ng-template>
 
 
