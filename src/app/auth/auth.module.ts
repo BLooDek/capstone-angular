@@ -10,6 +10,7 @@ import { AuthService } from './services/auth.service';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { ConfirmLogoutComponent } from './components/confirm-logout/confirm-logout.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,6 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     EffectsModule.forFeature([AuthEffects]),
   ],
   exports: [RegisterDialogComponent],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
 })
 export class AuthModule {}
