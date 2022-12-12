@@ -6,7 +6,6 @@
       <input
         formControlName="title"
         matInput
-        placeholder="title"
         cdkFocusInitial
       />
       <mat-error *ngIf="title?.hasError('required')"
@@ -17,12 +16,15 @@
 
     <mat-form-field floatLabel="always">
       <mat-label>body</mat-label>
-      <textarea type="text" formControlName="body" matInput placeholder="..."></textarea>
+      <textarea type="text" formControlName="body" matInput></textarea>
+
       <mat-error *ngIf="body.hasError('required')"
       >required
       </mat-error
       >
     </mat-form-field>
+    <app-logging-date formControlName="created_at"></app-logging-date>
+
   </form>
 </div>
 <div mat-dialog-actions align="end">

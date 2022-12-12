@@ -23,6 +23,10 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackBarService } from './services/snack.service';
 import { MyLetDirective } from './directives/my-let.directive';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
+import { LoggingDateComponent } from './components/logging-date/logging-date.component';
 
 const materialModules = [
   MatToolbarModule,
@@ -39,6 +43,8 @@ const materialModules = [
   MatPaginatorModule,
   TextFieldModule,
   MatSnackBarModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({
@@ -47,6 +53,7 @@ const materialModules = [
     SpinnerComponent,
     BoolToWordPipe,
     MyLetDirective,
+    LoggingDateComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +61,7 @@ const materialModules = [
     RouterModule,
     ReactiveFormsModule,
     OverlayModule,
+    FormsModule,
   ],
   exports: [
     NavigationComponent,
@@ -62,6 +70,9 @@ const materialModules = [
     OverlayModule,
     BoolToWordPipe,
     MyLetDirective,
+
+    FormsModule,
+    LoggingDateComponent,
   ],
   providers: [SpinnerService, SnackBarService],
 })

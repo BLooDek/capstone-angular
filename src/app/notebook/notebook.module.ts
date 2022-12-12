@@ -17,7 +17,13 @@ import { EditNoteDialogComponent } from './components/edit-note-dialog/edit-note
 import { ConfirmDeleteNoteComponent } from './components/confirm-delete-note/confirm-delete-note.component';
 
 @NgModule({
-  declarations: [NotebookComponent, AddNoteDialogComponent, NoteCardComponent, EditNoteDialogComponent, ConfirmDeleteNoteComponent],
+  declarations: [
+    NotebookComponent,
+    AddNoteDialogComponent,
+    NoteCardComponent,
+    EditNoteDialogComponent,
+    ConfirmDeleteNoteComponent,
+  ],
   imports: [
     CommonModule,
     SharedModule,
