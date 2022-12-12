@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+label {
+  font-weight: bold;
+  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+}
+
+mat-form-field {
+  margin: 1.6rem 4rem;
+  width: 350px !important;
+}
