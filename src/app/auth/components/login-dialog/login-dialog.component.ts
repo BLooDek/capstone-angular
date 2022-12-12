@@ -23,6 +23,12 @@ export class LoginDialogComponent {
       password: ['', [Validators.required]],
     });
   }
+  get email() {
+    return this.formGroup.get('email');
+  }
+  get password() {
+    return this.formGroup.get('password');
+  }
 
   onSubmit() {
     this._store.dispatch(

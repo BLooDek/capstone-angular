@@ -22,9 +22,7 @@ import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
     BrowserAnimationsModule,
     AuthModule,
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

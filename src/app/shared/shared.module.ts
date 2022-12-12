@@ -10,7 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { ConstService } from './services/const.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerService } from './services/spinner.service';
@@ -23,6 +22,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackBarService } from './services/snack.service';
+import { MyLetDirective } from './directives/my-let.directive';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
+import { LoggingDateComponent } from './components/logging-date/logging-date.component';
 
 const materialModules = [
   MatToolbarModule,
@@ -39,16 +43,25 @@ const materialModules = [
   MatPaginatorModule,
   TextFieldModule,
   MatSnackBarModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({
-  declarations: [NavigationComponent, SpinnerComponent, BoolToWordPipe],
+  declarations: [
+    NavigationComponent,
+    SpinnerComponent,
+    BoolToWordPipe,
+    MyLetDirective,
+    LoggingDateComponent,
+  ],
   imports: [
     CommonModule,
     ...materialModules,
     RouterModule,
     ReactiveFormsModule,
     OverlayModule,
+    FormsModule,
   ],
   exports: [
     NavigationComponent,
@@ -56,7 +69,11 @@ const materialModules = [
     ReactiveFormsModule,
     OverlayModule,
     BoolToWordPipe,
+    MyLetDirective,
+
+    FormsModule,
+    LoggingDateComponent,
   ],
-  providers: [ConstService, SpinnerService, SnackBarService],
+  providers: [SpinnerService, SnackBarService],
 })
 export class SharedModule {}

@@ -7,6 +7,7 @@ import * as AuthActions from '../actions/auth.actions';
 import { AuthService } from '../services/auth.service';
 import { SpinnerService } from '../../shared/services/spinner.service';
 import { SnackBarService } from '../../shared/services/snack.service';
+import { LocalTokenService } from '../services/local-token.service';
 
 @Injectable()
 export class AuthEffects {
@@ -15,7 +16,8 @@ export class AuthEffects {
     private _store: Store<IModuleState>,
     private _authService: AuthService,
     private _spinnerService: SpinnerService,
-    private _snackService: SnackBarService
+    private _snackService: SnackBarService,
+    private _tokenService: LocalTokenService
   ) {}
 
   registerUser$: Observable<Action> = createEffect(() =>
@@ -73,6 +75,52 @@ export class AuthEffects {
       )
     )
   );
+  checkToken$: Observable<Action> = createEffect(() =>
+    this._actions$.pipe(
+      ofType(AuthActions.GetTokenAction),
+      switchMap(() => {
+        const token = this._tokenService.getToken();
+        if (token) {
+          return of(AuthActions.GetTokenActionSuccess({ key: token }));
+        }
+        return of(AuthActions.GetTokenActionError({ error: 'no token saved' }));
+      })
+    )
+  );
+  validateToken$: Observable<Action> = createEffect(() =>
+    this._actions$.pipe(
+      ofType(AuthActions.GetTokenActionSuccess),
+      switchMap(() => of(AuthActions.GetUserDataAction()))
+    )
+  );
+
+  saveToken$: Observable<Action> = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(
+          AuthActions.LoginUserActionSuccess,
+          AuthActions.RegisterUserActionSuccess
+        ),
+        tap((payload) => {
+          this._tokenService.saveToken(payload.key);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  removeToken$: Observable<Action> = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(
+          AuthActions.GetUserDataActionError,
+          AuthActions.LogoutUserActionSuccess
+        ),
+        tap(() => {
+          this._tokenService.removeToken();
+        })
+      ),
+    { dispatch: false }
+  );
 
   enableSpinner$ = createEffect(
     () =>
@@ -81,7 +129,8 @@ export class AuthEffects {
           AuthActions.LoginUserAction,
           AuthActions.GetUserDataAction,
           AuthActions.LogoutUserAction,
-          AuthActions.RegisterUserAction
+          AuthActions.RegisterUserAction,
+          AuthActions.GetTokenAction
         ),
         tap(() => this._spinnerService.spinnerAttach()),
         tap((action) => this._snackService.openSnackBar(action.type, 'Ok'))
@@ -99,7 +148,9 @@ export class AuthEffects {
           AuthActions.LogoutUserActionSuccess,
           AuthActions.LogoutUserActionError,
           AuthActions.RegisterUserActionSuccess,
-          AuthActions.RegisterUserActionError
+          AuthActions.RegisterUserActionError,
+          AuthActions.GetTokenActionSuccess,
+          AuthActions.GetTokenActionError
         ),
         tap(() => this._spinnerService.spinnerDetach()),
         tap((action) => this._snackService.openSnackBar(action.type, 'Ok'))

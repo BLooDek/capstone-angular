@@ -55,6 +55,16 @@ export class RegisterDialogComponent {
     );
   }
 
+  get email() {
+    return this.formGroup.get('email');
+  }
+  get password1() {
+    return this.formGroup.get('password1');
+  }
+  get password2() {
+    return this.formGroup.get('password2');
+  }
+
   passwordsMatchValidator(): ValidatorFn {
     return (formGroup: FormGroup) => {
       const password1 = formGroup.get('password1');

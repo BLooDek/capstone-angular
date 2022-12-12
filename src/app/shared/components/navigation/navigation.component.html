@@ -1,16 +1,16 @@
-<mat-toolbar
-><span>Capstone😎</span>
+<mat-toolbar *myLet="(userData$ | async) as userData ">
 
+<span>Capstone😎</span>
   <a mat-button routerLinkActive="mat-accent" routerLink="home">My info</a>
   <a mat-button routerLinkActive="mat-accent" routerLink="users" [routerLinkActiveOptions]="{exact: false}">Users</a>
   <a mat-button routerLinkActive="mat-accent" routerLink="notes">Notes</a>
   <span class="spacer"></span>
-  <span *ngIf="userData$ | async">Hey {{(userData$ | async).email}}</span>
+  <span *ngIf="userData">Hey {{userData.email}}</span>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button *ngIf="(userData$ | async); else signInMenu" mat-menu-item (click)="openLogoutDialog()">Sign Out</button>
+    <button *ngIf="userData; else signInMenu" mat-menu-item (click)="openLogoutDialog()">Sign Out</button>
     <ng-template #signInMenu>
       <button mat-menu-item (click)="openRegisterDialog()">Sign Up</button>
       <button mat-menu-item (click)="openLoginDialog()">Sign In</button>
@@ -19,4 +19,5 @@
 
   </mat-menu>
 </mat-toolbar>
+
 

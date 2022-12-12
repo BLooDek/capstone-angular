@@ -51,3 +51,12 @@ export const LogoutUserActionError = createAction(
   AUTH_ACTION_TYPES.LOGOUT_USER_ERROR,
   props<{ error: any }>()
 );
+export const GetTokenAction = createAction(AUTH_ACTION_TYPES.GET_TOKEN_ACTION);
+export const GetTokenActionSuccess = createAction(
+  AUTH_ACTION_TYPES.GET_TOKEN_ACTION_SUCCESS,
+  props<IUserToken>()
+);
+export const GetTokenActionError = createAction(
+  AUTH_ACTION_TYPES.GET_TOKEN_ACTION_ERROR,
+  props<{ error: any }>()
+);
