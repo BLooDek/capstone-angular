@@ -10,7 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { ConstService } from './services/const.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerService } from './services/spinner.service';
@@ -57,6 +56,6 @@ const materialModules = [
     OverlayModule,
     BoolToWordPipe,
   ],
-  providers: [ConstService, SpinnerService, SnackBarService],
+  providers: [SpinnerService, SnackBarService],
 })
 export class SharedModule {}

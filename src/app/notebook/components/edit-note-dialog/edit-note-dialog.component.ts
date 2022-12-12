@@ -36,6 +36,19 @@ export class EditNoteDialogComponent {
       is_published: [this.data.is_published],
     });
   }
+  get id() {
+    return this.formGroup.get('id');
+  }
+  get title() {
+    return this.formGroup.get('title');
+  }
+  get body() {
+    return this.formGroup.get('body');
+  }
+  get is_published() {
+    return this.formGroup.get('is_published');
+  }
+
   onSubmit() {
     this._dialogRef.close(this.formGroup.getRawValue());
   }

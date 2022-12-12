@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ConstService } from '../../shared/services/const.service';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { IUserData } from '../../shared/models/shared.models';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class UsersService {
-  constructor(private _http: HttpClient, private _const: ConstService) {}
+  constructor(private _http: HttpClient) {}
 
   getTableData(): Observable<IUserData[]> {
-    const url = `${this._const.API_URL}auth/all`;
+    const url = `${environment.API_URL}auth/all`;
     return this._http.get<IUserData[]>(url).pipe(
       map((data) => data),
       catchError((e) => throwError(() => e))

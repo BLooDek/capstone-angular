@@ -9,7 +9,7 @@
         placeholder="title"
         cdkFocusInitial
       />
-      <mat-error *ngIf="formGroup?.get('title')?.hasError('required')"
+      <mat-error *ngIf="title?.hasError('required')"
       >required
       </mat-error
       >
@@ -18,7 +18,7 @@
     <mat-form-field floatLabel="always">
       <mat-label>body</mat-label>
       <textarea type="text" formControlName="body" matInput placeholder="..."></textarea>
-      <mat-error *ngIf="formGroup.get('body').hasError('required')"
+      <mat-error *ngIf="body.hasError('required')"
       >required
       </mat-error
       >

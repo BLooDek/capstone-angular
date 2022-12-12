@@ -11,6 +11,8 @@ import { LoginDialogComponent } from './components/login-dialog/login-dialog.com
 import { ConfirmLogoutComponent } from './components/confirm-logout/confirm-logout.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { AuthGuard } from './guards/auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,10 @@ import { AuthGuard } from './guards/auth.guard';
     EffectsModule.forFeature([AuthEffects]),
   ],
   exports: [RegisterDialogComponent],
-  providers: [AuthService, AuthGuard],
+  providers: [
+    AuthService,
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
 })
 export class AuthModule {}

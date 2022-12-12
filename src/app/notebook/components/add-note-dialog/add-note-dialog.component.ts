@@ -23,6 +23,12 @@ export class AddNoteDialogComponent implements OnInit {
       body: ['', [Validators.required]],
     });
   }
+  get title() {
+    return this.formGroup.get('title');
+  }
+  get body() {
+    return this.formGroup.get('body');
+  }
 
   ngOnInit(): void {}
 
