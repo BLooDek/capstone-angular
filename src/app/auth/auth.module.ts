@@ -13,6 +13,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { LocalTokenService } from './services/local-token.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
   exports: [RegisterDialogComponent],
   providers: [
     AuthService,
+    LocalTokenService,
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],

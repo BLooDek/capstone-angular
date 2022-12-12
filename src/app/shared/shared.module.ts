@@ -22,6 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackBarService } from './services/snack.service';
+import { MyLetDirective } from './directives/my-let.directive';
 
 const materialModules = [
   MatToolbarModule,
@@ -41,7 +42,12 @@ const materialModules = [
 ];
 
 @NgModule({
-  declarations: [NavigationComponent, SpinnerComponent, BoolToWordPipe],
+  declarations: [
+    NavigationComponent,
+    SpinnerComponent,
+    BoolToWordPipe,
+    MyLetDirective,
+  ],
   imports: [
     CommonModule,
     ...materialModules,
@@ -55,6 +61,7 @@ const materialModules = [
     ReactiveFormsModule,
     OverlayModule,
     BoolToWordPipe,
+    MyLetDirective,
   ],
   providers: [SpinnerService, SnackBarService],
 })

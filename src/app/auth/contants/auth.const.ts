@@ -2,6 +2,7 @@ export const AUTH_HEADER = 'Authorization';
 export const AUTH_TOKEN = (token) => `Token ${token}`;
 export const EMAIL_VALIDATION_PATTERN =
   /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+export const TOKEN_KEY = 'local-token';
 export enum AUTH_ACTION_TYPES {
   REGISTER = '[Auth] Register User',
   REGISTER_SUCCESS = '[Auth] Register User Success',
@@ -15,4 +16,7 @@ export enum AUTH_ACTION_TYPES {
   LOGOUT_USER = '[Auth] Logout User',
   LOGOUT_USER_SUCCESS = '[Auth] Logout User Success',
   LOGOUT_USER_ERROR = '[Auth] Logout User Error',
+  GET_TOKEN_ACTION = '[Auth] Get Token Action',
+  GET_TOKEN_ACTION_SUCCESS = '[Auth] Get Token Action Success',
+  GET_TOKEN_ACTION_ERROR = '[Auth] Get Token Action Error',
 }

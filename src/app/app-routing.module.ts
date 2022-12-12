@@ -12,14 +12,14 @@ const routes: Routes = [
     path: 'notes',
     loadChildren: () =>
       import('./notebook/notebook.module').then((m) => m.NotebookModule),
-    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
   },
   { path: 'users', redirectTo: 'users/1', pathMatch: 'full' },
   {
     path: 'users/:id',
     loadChildren: () =>
       import('./users/users.module').then((m) => m.UsersModule),
-    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
